@@ -2,7 +2,8 @@
 # coding: utf-8
 
 # Import required libraries
-from config import CONFIG
+
+import importlib
 from PIL import Image
 import pandas as pd
 import numpy as np
@@ -15,6 +16,11 @@ import warnings
 warnings.simplefilter(action='ignore', category=FutureWarning)
 
 
+configFile = importlib.import_module("configs.configExample")
+CONFIG = configFile.CONFIG
+PATH = configFile.PATH
+
+
 # Import configuration file
 
 
@@ -22,7 +28,7 @@ warnings.simplefilter(action='ignore', category=FutureWarning)
 def parse_config():
 
     # Input traits must be placed in the assets folder. Change this value if you want to name it something else.
-    assets_path = 'assets'
+    assets_path = os.path.join('assets', PATH)
 
     # Loop through all layers defined in CONFIG
     for layer in CONFIG:
@@ -73,14 +79,15 @@ def get_weighted_rarities(arr):
 
 
 def generate_single_image(filepaths, output_filename=None):
+    assets_path = os.path.join('assets', PATH)
 
     # Treat the first layer as the background
-    bg = Image.open(os.path.join('assets', filepaths[0]))
+    bg = Image.open(os.path.join(assets_path, filepaths[0]))
 
     # Loop through layers 1 to n and stack them on top of another
     for filepath in filepaths[1:]:
         if filepath.endswith('.png'):
-            img = Image.open(os.path.join('assets', filepath))
+            img = Image.open(os.path.join(assets_path, filepath))
             bg.paste(img, (0, 0), img)
 
     # Save the final image into desired location
@@ -162,7 +169,7 @@ def generate_images(edition, count, drop_dup=True):
         rarity_table[layer['name']] = []
 
     # Define output path to output/edition {edition_num}
-    op_path = os.path.join('output', 'edition ' + str(edition), 'images')
+    op_path = os.path.join('output', PATH, str(edition), 'images')
 
     # Will require this to name final images as 000, 001,...
     zfill_count = len(str(count - 1))
@@ -246,8 +253,7 @@ def main():
     rt = generate_images(edition_name, num_avatars)
 
     print("Saving metadata...")
-    rt.to_csv(os.path.join('output', 'edition ' +
-              str(edition_name), 'metadata.csv'))
+    rt.to_csv(os.path.join('output', PATH, str(edition_name), 'metadata.csv'))
 
     print("Task complete!")
 
