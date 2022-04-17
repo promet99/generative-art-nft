@@ -1,4 +1,6 @@
 PATH = "Animal/Bear"
+COUNT = 62
+BASE = "Animal"
 CONFIG = [
     {
         'id': 1,
@@ -12,7 +14,7 @@ CONFIG = [
         'name': 'weapon',
         'directory': '2-weapon',
         'required': False,
-        'rarity_weights': 100,
+        'rarity_weights': 65,
     },
     {
         'id': 3,
@@ -25,14 +27,14 @@ CONFIG = [
         'id': 4,
         'name': 'clothing',
         'directory': '4-clothing',
-        'required': False,
+        'required': True,
         'rarity_weights': None,
     },
     {
         'id': 5,
         'name': 'mouth',
         'directory': '5-mouth',
-        'required': False,
+        'required': True,
         'rarity_weights': None,
     },
     {
@@ -46,7 +48,7 @@ CONFIG = [
         'id': 7,
         'name': 'accessory',
         'directory': '7-accessory',
-        'required': True,
-        'rarity_weights': None,
+        'required': False,
+        'rarity_weights': 50,
     },
 ]

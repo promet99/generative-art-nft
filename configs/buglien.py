@@ -1,4 +1,15 @@
+# * 외계인
+# 외계인무늬 100
+# 외계인타투 20
+# 안경 25
+# 악세사리 70
+# 외계인뿔 100
+# 가면 10
+
+
 PATH = "Buglien"
+COUNT = 564
+BASE = "Buglien"
 CONFIG = [
     {
         'id': 1,
@@ -12,7 +23,7 @@ CONFIG = [
         'name': 'weapon',
         'directory': '2-weapon',
         'required': False,
-        'rarity_weights': 100,
+        'rarity_weights': 65,
     },
     {
         'id': 3,
@@ -32,7 +43,7 @@ CONFIG = [
         'id': 5,
         'name': 'pattern',
         'directory': '5-pattern',
-        'required': False,
+        'required': True,
         'rarity_weights': None,
     },
     {
@@ -40,7 +51,7 @@ CONFIG = [
         'name': 'tattoo',
         'directory': '6-tattoo',
         'required': False,
-        'rarity_weights': None,
+        'rarity_weights': 20,
     },
     {
         'id': 7,
@@ -74,15 +85,15 @@ CONFIG = [
         'id': 11,
         'name': 'glasses',
         'directory': '11-glasses',
-        'required': True,
-        'rarity_weights': None,
+        'required': False,
+        'rarity_weights': 25,
     },
     {
         'id': 12,
         'name': 'accessory',
         'directory': '12-accessory',
-        'required': True,
-        'rarity_weights': None,
+        'required': False,
+        'rarity_weights': 70,
     },
     {
         'id': 13,
@@ -95,7 +106,7 @@ CONFIG = [
         'id': 14,
         'name': 'mask',
         'directory': '14-mask',
-        'required': True,
-        'rarity_weights': None,
+        'required': False,
+        'rarity_weights': 10,
     },
 ]

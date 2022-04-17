@@ -1,4 +1,6 @@
 PATH = "Buglien Animal/Mouse"
+COUNT = 94
+BASE = "Buglien Animal"
 CONFIG = [
     {
         'id': 1,
@@ -12,7 +14,7 @@ CONFIG = [
         'name': 'weapon',
         'directory': '2-weapon',
         'required': False,
-        'rarity_weights': 100,
+        'rarity_weights': 65,
     },
     {
         'id': 3,
@@ -25,7 +27,7 @@ CONFIG = [
         'id': 4,
         'name': 'clothing',
         'directory': '4-clothing',
-        'required': False,
+        'required': True,
         'rarity_weights': None,
     },
     {
@@ -33,7 +35,7 @@ CONFIG = [
         'name': 'pattern',
         'directory': '5-pattern',
         'required': False,
-        'rarity_weights': None,
+        'rarity_weights': 60,
     },
     {
         'id': 6,
@@ -53,8 +55,8 @@ CONFIG = [
         'id': 8,
         'name': 'tattoo',
         'directory': '8-tattoo',
-        'required': True,
-        'rarity_weights': None,
+        'required': False,
+        'rarity_weights': 30,
     },
     {
         'id': 9,
@@ -67,21 +69,21 @@ CONFIG = [
         'id': 10,
         'name': 'accessory',
         'directory': '10-accessory',
-        'required': True,
-        'rarity_weights': None,
+        'required': False,
+        'rarity_weights': 50,
     },
     {
         'id': 11,
         'name': 'glasses',
         'directory': '11-glasses',
-        'required': True,
-        'rarity_weights': None,
+        'required': False,
+        'rarity_weights': 25,
     },
     {
         'id': 12,
         'name': 'horn',
         'directory': '12-horn',
-        'required': True,
-        'rarity_weights': None,
+        'required': False,
+        'rarity_weights': 50,
     },
 ]

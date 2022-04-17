@@ -19,6 +19,8 @@ warnings.simplefilter(action='ignore', category=FutureWarning)
 configFile = importlib.import_module("configs.configExample")
 CONFIG = configFile.CONFIG
 PATH = configFile.PATH
+COUNT = configFile.COUNT
+BASE = configFile.BASE
 
 
 # Import configuration file
