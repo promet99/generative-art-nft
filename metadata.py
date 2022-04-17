@@ -13,7 +13,7 @@ from copy import deepcopy
 import warnings
 warnings.simplefilter(action='ignore', category=FutureWarning)
 
-configFile = importlib.import_module("configs.configExample")
+configFile = importlib.import_module("configs.buglienAnimalTiger")
 CONFIG = configFile.CONFIG
 PATH = configFile.PATH
 COUNT = configFile.COUNT
@@ -27,14 +27,15 @@ BASE_NAME = ""
 BASE_JSON = {
     "name": BASE_NAME,
     "description": "",
-    "image": BASE_IMAGE_URL,
+    # "image": BASE_IMAGE_URL,
+    "image": "",
     "attributes": [],
 }
 
 
 # Get metadata and JSON files path based on edition
-def generate_paths(edition_name):
-    edition_path = os.path.join('output', PATH, str(edition_name))
+def generate_paths():
+    edition_path = os.path.join('output', PATH)
     metadata_path = os.path.join(edition_path, 'metadata.csv')
     json_path = os.path.join(edition_path, 'json')
 
@@ -66,7 +67,8 @@ def get_attribute_metadata(metadata_path):
 
     # Get zfill count based on number of images generated
     # -1 according to nft.py. Otherwise not working for 100 NFTs, 1000 NTFs, 10000 NFTs and so on
-    zfill_count = len(str(df.shape[0]-1))
+    # zfill_count = len(str(df.shape[0]-1))
+    zfill_count = 4
 
     return df, zfill_count
 
@@ -76,17 +78,17 @@ def get_attribute_metadata(metadata_path):
 def main():
 
     # Get edition name
-    print("Enter edition you want to generate metadata for: ")
+    # print("Enter edition you want to generate metadata for: ")
     while True:
-        edition_name = input()
-        edition_path, metadata_path, json_path = generate_paths(edition_name)
+        # edition_name = input()
+        edition_path, metadata_path, json_path = generate_paths()
 
         if os.path.exists(edition_path):
             print("Edition exists! Generating JSON metadata...")
             break
         else:
             print("Oops! Looks like this edition doesn't exist! Check your output folder to see what editions exist.")
-            print("Enter edition you want to generate metadata for: ")
+            # print("Enter edition you want to generate metadata for: ")
             continue
 
     # Make json folder
@@ -102,16 +104,19 @@ def main():
         item_json = deepcopy(BASE_JSON)
 
         # Append number to base name
-        item_json['name'] = item_json['name'] + str(idx)
+        # item_json['name'] = item_json['name'] + str(idx)
 
         # Append image PNG file name to base image path
-        item_json['image'] = item_json['image'] + \
-            '/' + str(idx).zfill(zfill_count) + '.png'
+        item_json['image'] = item_json['image']
+        # + '/' + str(idx).zfill(zfill_count) + '.png'
 
         # Convert pandas series to dictionary
         attr_dict = dict(row)
 
         # Add all existing traits to attributes dictionary
+        item_json['attributes'].append(
+            {'trait_type': 'Base', 'value': BASE})
+
         for attr in attr_dict:
 
             if attr_dict[attr] != 'none':

@@ -3,3 +3,5 @@ __pycache__
 assets
 output
 .DS_Store
+node_modules
+dist

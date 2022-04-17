@@ -16,7 +16,7 @@ import warnings
 warnings.simplefilter(action='ignore', category=FutureWarning)
 
 
-configFile = importlib.import_module("configs.configExample")
+configFile = importlib.import_module("configs.human")
 CONFIG = configFile.CONFIG
 PATH = configFile.PATH
 COUNT = configFile.COUNT
@@ -163,15 +163,15 @@ def generate_trait_set_from_config():
 
 
 # Generate the image set. Don't change drop_dup
-def generate_images(edition, count, drop_dup=True):
+def generate_images(count, drop_dup=True):
 
     # Initialize an empty rarity table
     rarity_table = {}
     for layer in CONFIG:
         rarity_table[layer['name']] = []
 
-    # Define output path to output/edition {edition_num}
-    op_path = os.path.join('output', PATH, str(edition), 'images')
+    # Define output path to output/{PATH}
+    op_path = os.path.join('output', PATH, 'images')
 
     # Will require this to name final images as 000, 001,...
     zfill_count = len(str(count - 1))
@@ -242,20 +242,17 @@ def main():
     print("You can create a total of %i distinct avatars" % (tot_comb))
     print()
 
-    print("How many avatars would you like to create? Enter a number greater than 0: ")
-    while True:
-        num_avatars = int(input())
-        if num_avatars > 0:
-            break
-
-    print("What would you like to call this edition?: ")
-    edition_name = input()
+    # print("How many avatars would you like to create? Enter a number greater than 0: ")
+    # while True:
+    #     num_avatars = int(input())
+    #     if num_avatars > 0:
+    #         break
 
     print("Starting task...")
-    rt = generate_images(edition_name, num_avatars)
+    rt = generate_images(COUNT)
 
     print("Saving metadata...")
-    rt.to_csv(os.path.join('output', PATH, str(edition_name), 'metadata.csv'))
+    rt.to_csv(os.path.join('output', PATH, 'metadata.csv'))
 
     print("Task complete!")
 
