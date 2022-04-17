@@ -13,7 +13,29 @@ from copy import deepcopy
 import warnings
 warnings.simplefilter(action='ignore', category=FutureWarning)
 
-configFile = importlib.import_module("configs.buglienAnimalTiger")
+CONFIG_PATH = [
+    "human",
+
+    "buglien",
+
+    "animalBear",
+    "animalBull",
+    "animalElephant",
+    "animalFrog",
+    "animalOrc",
+    "animalTiger",
+
+    "buglienAnimalBat",
+    "buglienAnimalCat",
+    "buglienAnimalDeer",
+    "buglienAnimalMouse"
+    "buglienAnimalRabbit",
+    "buglienAnimalTiger",
+]
+
+CONFIT_INDEX = 0
+
+configFile = importlib.import_module("configs." + CONFIG_PATH[CONFIT_INDEX])
 CONFIG = configFile.CONFIG
 PATH = configFile.PATH
 COUNT = configFile.COUNT
