@@ -56,10 +56,11 @@ const shuffle = (array: number[]) => {
 };
 
 const main = () => {
-  // TODO: 1. 0~2499 배열 셔플 후, 14개 종족 합쳐서 번호 다시 붙이고, 0~2499로 만들기
-  // TODO: 2. 0~2499로 만들어진 후, name, description, image(ipfs주소) 업데이트하기
-  const array: number[] = new Array(2).fill(undefined).map((e, i) => i);
+  // * 1. 0~2499 배열 셔플 후, 14개 종족 합쳐서 번호 다시 붙이고, 0~2499로 만들기
+
+  const array: number[] = new Array(2500).fill(undefined).map((e, i) => i);
   const shuffledArray = shuffle(array);
+  // console.log({ shuffledArray });
 
   for (const index in shuffledArray) {
     const [baseDir, baseIndex] = resolvePathFromIndex(shuffledArray[index]);
@@ -69,17 +70,31 @@ const main = () => {
       "images",
       padImagePath(baseIndex) + ".png"
     );
+    const newImgPath = path.join(
+      "finalOutput",
+      "image",
+      index.toString() + ".png"
+    );
+
     const originalMetadataPath = path.join(
       "output",
       baseDir,
       "json",
       baseIndex.toString()
     );
-    console.log({ originalImgPath, originalMetadataPath });
-    const originalImg = fs.readFileSync(originalImgPath);
-    const originalMetadata = fs.readFileSync(originalMetadataPath);
-    console.log({ originalImg, originalMetadata });
+    const newMetadataPath = path.join(
+      "finalOutput",
+      "metadata",
+      index.toString()
+    );
+
+    fs.copyFileSync(originalImgPath, newImgPath);
+    fs.copyFileSync(originalMetadataPath, newMetadataPath);
   }
 };
 
 main();
+
+const rename = () => {
+  // TODO: 2. 0~2499로 만들어진 후, name, description, image(ipfs주소) 업데이트하기
+};
