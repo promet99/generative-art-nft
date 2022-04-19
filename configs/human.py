@@ -26,7 +26,7 @@ CONFIG = [
     },
     {
         'id': 3,
-        'name': 'body',
+        'name': 'face',
         'directory': '3-Face',
         'required': True,
         'rarity_weights': None,

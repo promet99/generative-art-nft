@@ -34,7 +34,8 @@ export const resolvePathFromIndex = (i: number): [string, number] => {
 
   return ["", -1];
 };
-const padImagePath = (index: number) => index.toString().padStart(4, "0");
+const padImagePath = (baseDir: string, index: number) =>
+  index.toString().padStart(baseDir.includes("Animal") ? 2 : 3, "0");
 
 const shuffle = (array: number[]) => {
   let currentIndex = array.length;
@@ -60,7 +61,11 @@ const main = () => {
 
   const array: number[] = new Array(2500).fill(undefined).map((e, i) => i);
   const shuffledArray = shuffle(array);
-  // console.log({ shuffledArray });
+  console.log({ shuffledArray });
+  fs.writeFileSync(
+    path.join("shuffledArray.json"),
+    JSON.stringify(shuffledArray)
+  );
 
   for (const index in shuffledArray) {
     const [baseDir, baseIndex] = resolvePathFromIndex(shuffledArray[index]);
@@ -68,7 +73,7 @@ const main = () => {
       "output",
       baseDir,
       "images",
-      padImagePath(baseIndex) + ".png"
+      padImagePath(baseDir, baseIndex) + ".png"
     );
     const newImgPath = path.join(
       "finalOutput",

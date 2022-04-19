@@ -28,7 +28,7 @@ CONFIG_PATH = [
     "buglienAnimalBat",
     "buglienAnimalCat",
     "buglienAnimalDeer",
-    "buglienAnimalMouse"
+    "buglienAnimalMouse",
     "buglienAnimalRabbit",
     "buglienAnimalTiger",
 ]
@@ -141,7 +141,7 @@ def main():
 
         for attr in attr_dict:
 
-            if attr_dict[attr] != 'none':
+            if attr_dict[attr] != 'none' and attr != 'Face':
                 item_json['attributes'].append(
                     {'trait_type': attr, 'value': attr_dict[attr]})
 

@@ -31,7 +31,7 @@ CONFIG_PATH = [
     "buglienAnimalBat",
     "buglienAnimalCat",
     "buglienAnimalDeer",
-    "buglienAnimalMouse"
+    "buglienAnimalMouse",
     "buglienAnimalRabbit",
     "buglienAnimalTiger",
 ]
@@ -162,16 +162,24 @@ def generate_trait_set_from_config():
 
     trait_set = []
     trait_paths = []
+    body_face_color_index = None
 
     for layer in CONFIG:
         # Extract list of traits and cumulative rarity weights
         traits, cum_rarities = layer['traits'], layer['cum_rarity_weights']
+        name = layer['name']
 
         # Generate a random number
         rand_num = random.random()
 
         # Select an element index based on random number and cumulative rarity weights
         idx = select_index(cum_rarities, rand_num)
+
+        if name == "body" or name == "face":
+            if body_face_color_index is None:
+                body_face_color_index = idx
+            else:
+                idx = body_face_color_index
 
         # Add selected trait to trait set
         trait_set.append(traits[idx])
