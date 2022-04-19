@@ -17,7 +17,7 @@ export const resolvePathFromIndex = (i: number): [string, number] => {
   } else if (i < 2034) {
     return ["Buglien Animal/Rabbit", i - 1940];
   } else if (i < 2128) {
-    return ["Buglien Animal/Tiger", i - 2034];
+    return ["Buglien Animal/Buglien Tiger", i - 2034];
   } else if (i < 2190) {
     return ["Animal/Bear", i - 2128];
   } else if (i < 2252) {

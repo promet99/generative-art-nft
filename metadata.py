@@ -9,6 +9,7 @@ import os
 from progressbar import progressbar
 import json
 from copy import deepcopy
+import sys
 
 import warnings
 warnings.simplefilter(action='ignore', category=FutureWarning)
@@ -33,9 +34,11 @@ CONFIG_PATH = [
     "buglienAnimalTiger",
 ]
 
-CONFIT_INDEX = 0
+print(int(sys.argv[1]))
+CONFIG_INDEX = int(sys.argv[1])
 
-configFile = importlib.import_module("configs." + CONFIG_PATH[CONFIT_INDEX])
+configFile = importlib.import_module("configs." + CONFIG_PATH[CONFIG_INDEX])
+
 CONFIG = configFile.CONFIG
 PATH = configFile.PATH
 COUNT = configFile.COUNT

@@ -1,4 +1,4 @@
-PATH = "Buglien Animal/Tiger"
+PATH = "Buglien Animal/Buglien Tiger"
 COUNT = 94
 BASE = "Buglien Animal"
 CONFIG = [
