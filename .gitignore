@@ -6,3 +6,5 @@ output
 node_modules
 dist
 finalOutput
+premint
+revealOutput

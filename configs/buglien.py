@@ -102,11 +102,4 @@ CONFIG = [
         'required': False,
         'rarity_weights': 25,
     },
-    {
-        'id': 14,
-        'name': 'mask',
-        'directory': '14-Mask',
-        'required': False,
-        'rarity_weights': 10,
-    },
 ]

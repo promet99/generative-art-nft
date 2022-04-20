@@ -106,13 +106,13 @@ CONFIG = [
         'name': 'headgear',
         'directory': '14-Headgear',
         'required': False,
-        'rarity_weights': 30,
+        'rarity_weights': 50,
     },
     {
         'id': 14,
         'name': 'mask',
         'directory': '15-Mask',
         'required': False,
-        'rarity_weights': 10,
+        'rarity_weights': 30,
     },
 ]

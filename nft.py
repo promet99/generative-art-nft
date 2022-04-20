@@ -166,6 +166,7 @@ def generate_trait_set_from_config():
     trait_set = []
     trait_paths = []
     body_face_color_index = None
+    has_headgear = False
 
     for layer in CONFIG:
         # Extract list of traits and cumulative rarity weights
@@ -183,6 +184,12 @@ def generate_trait_set_from_config():
                 body_face_color_index = idx
             else:
                 idx = body_face_color_index
+
+        # 헤드기어 50% 장착. 헤드기어 장착 안한 50% 중 30%는 마스크 장착 70%는 장착안함
+        if name == "headgear" and traits[idx] is not None:
+            has_headgear = True
+        if name == "mask" and has_headgear is True:
+            idx = 0
 
         # Add selected trait to trait set
         trait_set.append(traits[idx])
