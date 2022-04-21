@@ -2,7 +2,7 @@ import fs from "fs";
 import path from "path";
 import { metadataDataGenerator } from "./rename";
 
-const REVEAL_IMAGE_LINK = `ipfs://FUCK`;
+const REVEAL_IMAGE_LINK = `ipfs://QmNvE5kZX5JeVk2V3EMmJC5a5VgtvPv4dXn7nJB8r9RV7N`;
 
 const hiddenMetadata = (i: number | string) =>
   `{"name":"BugCity #${i}","description":"BugCity Citizen","image":"ipfs://QmSbpNnNjgvwtb7e2hKz575DPHFRRYKbxRUc35QNXtZKRp","external_url":"https://bugcity.io"}`;
@@ -87,10 +87,10 @@ const main = () => {
       const result = data
         .replace(/"name": ""/g, `"name": "${name}"`)
         .replace(/"description": ""/g, `"description": "${description}"`)
-        .replace(/"image": ""/g, `"image": "${REVEAL_IMAGE_LINK}/${index}"`)
+        .replace(/"image": ""/g, `"image": "${REVEAL_IMAGE_LINK}/${index}.png"`)
         .replace(
           `"ipfs://<— Your CID Code—>/ "`,
-          `"${REVEAL_IMAGE_LINK}/${index}"`
+          `"${REVEAL_IMAGE_LINK}/${index}.png"`
         );
 
       fs.writeFileSync(newMetadataPath, result, "utf8");
