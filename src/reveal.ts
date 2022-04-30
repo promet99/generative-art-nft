@@ -2,18 +2,18 @@ import fs from "fs";
 import path from "path";
 import { metadataDataGenerator } from "./rename";
 
-const REVEAL_IMAGE_LINK = `ipfs://QmNvE5kZX5JeVk2V3EMmJC5a5VgtvPv4dXn7nJB8r9RV7N`;
+const REVEAL_IMAGE_LINK = `ipfs://QmTjPW4pj1ZbWp7aVmgXBLmBx2Vy1WRufRf4j1G9TsxKV4`;
 
 const hiddenMetadata = (i: number | string) =>
   `{"name":"BugCity #${i}","description":"BugCity Citizen","image":"ipfs://QmSbpNnNjgvwtb7e2hKz575DPHFRRYKbxRUc35QNXtZKRp","external_url":"https://bugcity.io"}`;
-const revealUntil = 305;
+const revealUntil = 308;
 const shouldRevealByIndex = [
   0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
   1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
   1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
   1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
   1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+  1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
