@@ -2,7 +2,7 @@ import fs from "fs";
 import path from "path";
 import { metadataDataGenerator } from "./rename";
 
-const REVEAL_IMAGE_LINK = `ipfs://QmTjPW4pj1ZbWp7aVmgXBLmBx2Vy1WRufRf4j1G9TsxKV4`;
+const REVEAL_IMAGE_LINK = `ipfs://QmWgDFEmJ6ZHvEc5Pyong4t6D6oPg1WSX8npWebTAkUu1D`;
 
 const hiddenMetadata = (i: number | string) =>
   `{"name":"BugCity #${i}","description":"BugCity Citizen","image":"ipfs://QmSbpNnNjgvwtb7e2hKz575DPHFRRYKbxRUc35QNXtZKRp","external_url":"https://bugcity.io"}`;
@@ -21,6 +21,10 @@ const shouldRevealByIndex = [
   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1,
 ];
+const revealList = [
+  309, 195, 388, 156, 170, 157, 414, 415, 416, 438, 146, 245, 482, 483, 484,
+  485, 490, 491, 400, 515, 543, 544, 439,
+];
 
 const main = () => {
   // ? shouldReveal && revealUntil을 따른다.
@@ -36,7 +40,8 @@ const main = () => {
     const numIndex = parseInt(index);
     const shouldReveal: boolean =
       shouldRevealByIndex[numIndex] === 1 ||
-      (shouldRevealByIndex.length <= numIndex && numIndex <= revealUntil);
+      (shouldRevealByIndex.length <= numIndex && numIndex <= revealUntil) ||
+      revealList.includes(numIndex);
 
     const originalMetadataPath = path.join(
       "finalOutput",
