@@ -2,7 +2,7 @@ import fs from "fs";
 import path from "path";
 import { metadataDataGenerator } from "./rename";
 
-const REVEAL_IMAGE_LINK = `ipfs://QmWgDFEmJ6ZHvEc5Pyong4t6D6oPg1WSX8npWebTAkUu1D`;
+const REVEAL_IMAGE_LINK = `ipfs://QmX6HgTCRmd8wGQGYUeFKKWbkguTLtWzAEjig1vhCgDGCa`;
 
 const hiddenMetadata = (i: number | string) =>
   `{"name":"BugCity #${i}","description":"BugCity Citizen","image":"ipfs://QmSbpNnNjgvwtb7e2hKz575DPHFRRYKbxRUc35QNXtZKRp","external_url":"https://bugcity.io"}`;
@@ -23,7 +23,10 @@ const shouldRevealByIndex = [
 ];
 const revealList = [
   309, 195, 388, 156, 170, 157, 414, 415, 416, 438, 146, 245, 482, 483, 484,
-  485, 490, 491, 400, 515, 543, 544, 439,
+  485, 490, 491, 400, 515, 543, 544, 439, 287, 274, 374, 285, 147, 234, 148,
+  235, 458, 459, 318, 319, 320, 321, 586, 523, 524, 525, 526, 398, 652, 653,
+  575, 178, 176, 177, 358, 359, 360, 361, 430, 375, 561, 562, 380, 381, 616,
+  617, 618, 619, 160, 214, 171,
 ];
 
 const main = () => {
