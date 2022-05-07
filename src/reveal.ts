@@ -2,7 +2,7 @@ import fs from "fs";
 import path from "path";
 import { metadataDataGenerator } from "./rename";
 
-const REVEAL_IMAGE_LINK = `ipfs://QmX6HgTCRmd8wGQGYUeFKKWbkguTLtWzAEjig1vhCgDGCa`;
+const REVEAL_IMAGE_LINK = `ipfs://QmXQWsCy31dJ9tG6AYNeW1PDsZbuNRi5KCES7GjqXQf82U`;
 
 const hiddenMetadata = (i: number | string) =>
   `{"name":"BugCity #${i}","description":"BugCity Citizen","image":"ipfs://QmSbpNnNjgvwtb7e2hKz575DPHFRRYKbxRUc35QNXtZKRp","external_url":"https://bugcity.io"}`;
@@ -26,7 +26,9 @@ const revealList = [
   485, 490, 491, 400, 515, 543, 544, 439, 287, 274, 374, 285, 147, 234, 148,
   235, 458, 459, 318, 319, 320, 321, 586, 523, 524, 525, 526, 398, 652, 653,
   575, 178, 176, 177, 358, 359, 360, 361, 430, 375, 561, 562, 380, 381, 616,
-  617, 618, 619, 160, 214, 171,
+  617, 618, 619, 160, 214, 171, 152, 153, 262, 440, 441, 216, 516, 517, 275,
+  689, 594, 545, 546, 279, 168, 454, 424, 425, 294, 376, 492, 493, 588, 474,
+  475, 476, 477, 608, 609, 610, 611, 399, 377, 258, 401, 354, 690, 691, 692,
 ];
 
 const main = () => {
